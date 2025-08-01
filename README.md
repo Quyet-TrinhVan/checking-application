@@ -1,65 +1,90 @@
+
+
 # Face Checking Application
 
-A modular Python application for face recognition, anti-spoofing, and background analysis. Designed for secure, real-time identity verification in various environments.
+A modular, multi-platform solution for secure, real-time face recognition, anti-spoofing, and background analysis. This project supports backend, dashboard, and mobile components for comprehensive identity verification in various environments.
 
 ## Features
 - **Face Recognition:** Detect and identify faces from images or video streams.
 - **Anti-Spoofing:** Prevents fraudulent attempts using photos, videos, or masks.
-- **Background Analysis:** Analyzes scene context to improve recognition accuracy.
-- **RESTful API:** Easily integrate with other systems via HTTP endpoints.
+- **Background Analysis:** Improves recognition accuracy by analyzing scene context.
+- **RESTful API:** Integrate easily with other systems via HTTP endpoints.
+- **Dashboard:** Web-based interface for monitoring and management.
+- **Mobile:** Android and iOS clients for on-the-go verification.
 - **Modular Design:** Easily extend or replace components for custom use cases.
 
 ## Project Structure
 ```
 face_checking_application/
-├── app/            # Main application logic and API
-│   ├── api/        # API endpoints
-│   ├── modules/    # Core modules (face, spoofing, background)
-│   └── services/   # Service layer
-├── config/         # Configuration files
-├── data/           # Data storage (not tracked by git)
-├── docs/           # Documentation
-├── model/          # Pretrained models (not tracked by git)
-│   ├── background/
-│   ├── face/
-│   └── spoofing/
-├── test/           # Unit and integration tests
-├── run.py          # Application entry point
-├── requirements.txt
-└── README.md
+├── backend/         # Python backend (API, logic, models)
+│   ├── app/
+│   │   ├── api/         # API endpoints
+│   │   ├── config/      # Configuration files
+│   │   ├── modules/     # Core modules
+│   │   ├── schemas/     # Data schemas
+│   │   ├── services/    # Service layer
+│   │   └── __init__.py
+│   ├── data/            # ...
+│   ├── model/           # Pretrained models
+│   ├── requirements.txt
+│   ├── run.py           # Backend entry point
+│   └── test/            # Backend tests
+├── dashboard/       # Web dashboard
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── static/
+│   └── templates/
+├── mobile/          # Mobile clients
+│   ├── android/
+│   ├── ios/
+│   └── lib/
+├── .env             # Environment (not tracked by git)
+├── docs/            # Documentation and diagrams
+├── workflow/        # System workflow diagrams
+├── LICENSE
+├── README.md
+└── .gitignore
 ```
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.10+
+- Python 3.10+ (for backend)
 - pip
+- Node.js & npm (if dashboard uses JS frameworks)
+- Android Studio / Xcode (for mobile development)
 
 ### Installation
-1. Clone the repository:
-   ```sh
-   git clone <repo-url>
-   cd face_checking_application
-   ```
-2. Install dependencies:
-   ```sh
-   pip install -r requirements.txt
-   ```
 
-### Running the Application
+#### Backend
 ```sh
+cd backend
+pip install -r requirements.txt
 python run.py
 ```
 
-### API Usage
-- The API endpoints are defined in `app/api/`.
-- See the documentation in `docs/` for details on available endpoints and usage examples.
+#### Dashboard
+```sh
+cd dashboard
+pip install -r requirements.txt
+python app.py
+```
 
-## Contributing
-Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
+#### Mobile
+- Open `mobile/android` in Android Studio or `mobile/ios` in Xcode.
+
+## API Usage
+- API endpoints are defined in `backend/app/api/`.
+- See `docs/` for endpoint documentation and usage examples.
+
+## Testing
+- Backend tests: `pytest` in `backend/test/`
+- Dashboard tests: (add instructions if available)
+- Mobile tests: (add instructions if available)
+
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
-For questions or support, please contact the maintainer.
+For questions or support, please contact **quyettv1302@gmail.com** or open an issue on GitHub.
