@@ -43,7 +43,8 @@ coverage.xml
 Thumbs.db
 
 # Data, models, and outputs
-/data/
+*.jpg
+
 
 *.h5
 *.pth
@@ -62,3 +63,4 @@ Thumbs.db
 # Backup files
 *~
 *.bak
+
