@@ -1,0 +1,5 @@
+python==3.10.11
+deepface
+tensorflow==2.10.1
+deepface==0.0.79
+numpy==1.24.4
