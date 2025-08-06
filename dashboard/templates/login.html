@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Face Checking Dashboard</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body class="login-page">
+    <div class="dashboard-topbar">
+        <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Logo" class="dashboard-logo">
+        <span class="dashboard-brand">WeStart</span>
+    </div>
     <div class="branding">
         <span class="brand-main">WeCheck</span><br>
         <span class="brand-sub">Dashboard</span>

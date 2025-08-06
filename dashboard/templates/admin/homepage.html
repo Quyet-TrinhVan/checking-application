@@ -4,25 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - WeCheck</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body class="dashboard-page">
-    <div class="dashboard-header">
-        <h1>Welcome, Admin</h1>
-        <span class="dashboard-sub">WeCheck Dashboard</span>
+    <div class="dashboard-topbar">
+        <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Logo" class="dashboard-logo">
+        <span class="dashboard-brand">WeStart</span>
+    </div>
+    <div class="dashboard-searchbar">
+        <form method="GET" class="search-form">
+            <input type="text" name="q" class="search-input" placeholder="Search...">
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
     </div>
     <div class="dashboard-content">
-        <div class="dashboard-card">
-            <h2>System Status</h2>
-            <p>All systems operational.</p>
+        <div class="dashboard-row">
+            <a href="#system-status" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-server"></i></div>
+                <div class="dashboard-card-title">System Status</div>
+            </a>
+            <a href="#user-management" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-users"></i></div>
+                <div class="dashboard-card-title">User Management</div>
+            </a>
+            <a href="#reports" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="dashboard-card-title">Reports</div>
+            </a>
         </div>
-        <div class="dashboard-card">
-            <h2>User Management</h2>
-            <p>Manage users, roles, and permissions.</p>
-        </div>
-        <div class="dashboard-card">
-            <h2>Reports</h2>
-            <p>View and export activity reports.</p>
+        <div class="dashboard-row">
+            <a href="#settings" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-cogs"></i></div>
+                <div class="dashboard-card-title">Settings</div>
+            </a>
+            <a href="#analytics" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="dashboard-card-title">Analytics</div>
+            </a>
+            <a href="#notifications" class="dashboard-card">
+                <div class="dashboard-card-icon"><i class="fas fa-bell"></i></div>
+                <div class="dashboard-card-title">Notifications</div>
+            </a>
         </div>
     </div>
 </body>
