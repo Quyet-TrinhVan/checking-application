@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Setting</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <!-- Fixed Top Navbar -->
+    <nav class="main-navbar">
+        <div class="navbar-left">
+            <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Logo" class="dashboard-logo">
+            <span class="dashboard-brand">WeStart</span>
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-section-title">Setting</span>
+        </div>
+        <div class="navbar-right">
+            <div class="navbar-notification">
+                <i class="fas fa-bell"></i>
+                <span class="navbar-badge">3</span>
+            </div>
+            <span class="navbar-username">Trịnh Văn Quyết</span>
+            <div class="navbar-profile">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="setting-layout">
+        <!-- Fixed Left Sidebar -->
+        <aside class="setting-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#lecturer" class="sidebar-link active"><i class="fas fa-chalkboard-teacher"></i> Lecturer</a>
+                <a href="#student" class="sidebar-link"><i class="fas fa-user-graduate"></i> Student</a>
+                <a href="#course" class="sidebar-link"><i class="fas fa-book"></i> Course</a>
+                <a href="#room" class="sidebar-link"><i class="fas fa-door-open"></i> Room</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <i class="fas fa-robot"></i>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="setting-main-content">
+            <div class="setting-content-panel">
+                <div class="setting-content-header">
+                    <h1 class="setting-title">Lecturer</h1>
+                </div>
+                <div class="setting-table-container" id="setting-content-area">
+                    {% include 'admin/setting_lecturer.html' %}
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Sidebar nav click handler to update only content title and load template
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.sidebar-link');
+            const contentTitle = document.querySelector('.setting-title');
+            const contentArea = document.getElementById('setting-content-area');
+            // Set default to first active
+            const activeLink = document.querySelector('.sidebar-link.active');
+            if (activeLink) {
+                const text = activeLink.textContent.trim().split(/\s+/)[0];
+                contentTitle.textContent = text;
+            }
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    const text = this.textContent.trim().split(/\s+/)[0];
+                    contentTitle.textContent = text;
+                    // Load the corresponding template
+                    let template = '';
+                    if (text === 'Lecturer') template = 'setting_lecturer.html';
+                    else if (text === 'Student') template = 'setting_student.html';
+                    else if (text === 'Course') template = 'setting_course.html';
+                    else if (text === 'Room') template = 'setting_room.html';
+                    if (template) {
+                        fetch(`/admin/${template}`)
+                            .then(res => res.text())
+                            .then(html => { contentArea.innerHTML = html; });
+                    }
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
